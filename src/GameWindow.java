@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-
+import java.io.File;
 
 public class GameWindow {
 
@@ -35,6 +35,7 @@ public class GameWindow {
             label = new JLabel("Guess the Country!", SwingConstants.CENTER);
             label.setFont(new Font("SansSerif", Font.BOLD, 20));
             guessButton = new JButton("Guess");
+            imageLabel = new JLabel("", SwingConstants.CENTER);
 
             JPanel inputPanel = new JPanel();
             inputPanel.add(guessArea);
@@ -51,6 +52,7 @@ public class GameWindow {
 
             JPanel centerPanel = new JPanel(new BorderLayout());
             centerPanel.add(hintArea, BorderLayout.NORTH);
+            centerPanel.add(imageLabel, BorderLayout.CENTER);
 
             frame.add(centerPanel, BorderLayout.CENTER);
             frame.add(bottom, BorderLayout.SOUTH);
@@ -78,8 +80,24 @@ public class GameWindow {
         } else {
             hintArea.append("\n" + hints[hintsShown]);
             hintsShown++;
+            if (hintsShown == hints.length) {
+                ImageIcon icons = loadLandmarkImage();
+                if (icons != null) {
+                    imageLabel.setIcon(icons);
+                }
+            }
             label.setText("Incorrect, next hint");
             label.setForeground(Color.RED);
         }
+    }
+    static ImageIcon loadLandmarkImage() {
+        String name = Main.data.countryNames[Main.index].toLowerCase().replace(" ", "_");
+        File file = new File("resources/images/" + name + ".jpg");
+            if (!file.exists()) {
+            return null;
+        }
+        ImageIcon icon = new ImageIcon(file.getPath());
+        Image scaled = icon.getImage().getScaledInstance(350, -1, Image.SCALE_SMOOTH);
+        return new ImageIcon(scaled);
     }
 }
