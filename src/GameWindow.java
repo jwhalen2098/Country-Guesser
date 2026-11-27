@@ -4,6 +4,7 @@ import java.io.File;
 
 public class GameWindow {
 
+    //all the Swing components
     static JFrame frame;
     static JTextArea hintArea;
     static JTextField guessArea;
@@ -18,6 +19,7 @@ public class GameWindow {
     };
     static int hintsShown = 1;
 
+    //initializes all the swing components and builds the window
     public static void main(String[] agrs) {
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Country Guesser");
@@ -60,7 +62,7 @@ public class GameWindow {
         });
     }
 
-
+    //checks whether the answer submitted is correct and updates the window accordingly
     public static void checkAnswer() {
         String guess = guessArea.getText();
         if (guess.isBlank()) {
@@ -90,6 +92,8 @@ public class GameWindow {
             label.setForeground(Color.RED);
         }
     }
+
+    //loads the landmarks images from the resources/images/ folder in the repo based on todays puzzle.
     static ImageIcon loadLandmarkImage() {
         String name = Main.data.countryNames[Main.index].toLowerCase().replace(" ", "_");
         File file = new File("resources/images/" + name + ".jpg");

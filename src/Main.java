@@ -31,10 +31,12 @@ public class Main {
         }
     }
 
+    //uses todays date to create an index for the country arrays.
     static int getIndexFor(LocalDate date, int size) {
         return (int) (date.toEpochDay() % size);
     }
 
+    //checks whether the answer a player guessed is correct
     static boolean check(String guess) {
         return guess.trim().toLowerCase().equals(correctAnswer);
     }

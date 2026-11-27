@@ -1,5 +1,5 @@
 public class Countries {
-
+    //class that consists of all the data about each country stored in parallel arrays.
    String[] countryNames = {"Brazil", "France", "India", "Egypt", "China",
            "Italy", "Peru", "Australia", "Mexico", "Jordan",
            "Cambodia", "Japan", "United States", "United Kingdom", "Greece",
@@ -25,6 +25,7 @@ public class Countries {
            "Moai statues of Easter Island", "Mount Kilimanjaro", "Borobudur", "Grand Palace in Bangkok", "Windmills of Kinderdijk",
            "Cliffs of Moher", "Charles Bridge", "Petronas Twin Towers", "Ha Long Bay", "Belem Tower"};
 
+   //getters and setters.
    public String getName(int i) {
        return countryNames[i];
    }
