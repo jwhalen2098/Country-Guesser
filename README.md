@@ -8,7 +8,7 @@ Every day the program picks a country based on the date and gives the player hin
 
 ## How It Works
 
-[2-4 sentences: what Countries.java holds, how the date picks today's puzzle, how hints and guess checking work in Main.java]
+Countries.java stores the countries data in parallel arrays. Main.java uses today's date to pick the country and includes the main logic of giving 3 different hints and checking whether a guess is right after each hint. GameWindow.java uses a swing window that displays the hints as text and also includes an image of each country's most famous landmark.
 
 Documents:
 
@@ -18,10 +18,10 @@ Documents:
 
 ## Tech Stack
 
-- **Language:** Java [version, e.g. 25]
-- **Libraries:** `java.time.LocalDate` 
+- **Language:** Java version, e.g. 25
+- **Libraries:** `java.time.LocalDate` for the daily puzzle, and Swing ('javax.swing', 'java.awt') for the window
 - **Tools:** IntelliJ IDEA, Git and GitHub
-- **Data storage:** country data is stored in arrays in `Countries.java`, with no database or external files
+- **Data storage:** country data is stored in arrays in `Countries.java`, and the landmark photos are '.jpg' files stored in 'resources/images/'.
 
 ## Setup and Running
 
@@ -39,12 +39,13 @@ Documents:
    ```
    javac -d out src/*.java
    ```
-4. Run:
+4. Run the Swing Window:
    ```
-   java -cp out Main
+   java -cp out GameWindow
    ```
+Run the commands from the repo's root folder because the landmark images are stored in 'resources/images/', otherwise the photos won't show up.
 
-**Example run** (the country changes each day):
+**Example run(this is what the text displays since I can't show the Swing Window in here)** (the country changes each day):
 
 ```
 Today's puzzle index: 21
@@ -54,7 +55,7 @@ Incorrect, next hint
 Hint 2 (population): 67,000,000
 south africa
 Incorrect, next hint
-Hint 3 (landmark): Mount Kilimanjaro
+Hint 3 (landmark): Mount Kilimanjaro (with picture)
 tanzania
 Correct!
 ```
@@ -73,13 +74,12 @@ Correct!
 - [x] Pick the daily puzzle from the date
 - [x] Add the three-hint guessing loop and answer checking
 - [ ] Add a dropdown or autofill for guesses
-- [ ] Add a Swing window with images
+- [x] Add a Swing window with images
 - [ ] Record the demo video
 
 ## Future Plans
 
 - Autofill guesses or a dropdown of countries
-- Swing window that can show images
 
 ## Demo
 
